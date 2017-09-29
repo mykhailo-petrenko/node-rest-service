@@ -1,8 +1,12 @@
 const express = require('express');
 
-const app = express();
+const bookRouter = require('./routers/bookRouter');
 
 const PORT = process.env.PORT || 80;
+
+const app = express();
+
+app.use('/api', bookRouter);
 
 app.get('/', function(req, res) {
     res.write("Hello World!");
