@@ -1,15 +1,16 @@
 const {Router} = require('express');
-const bookService = require('../components/books/bookService');
+const Book = require('../components/books/Book');
 
 const bookRouter = Router();
 
 bookRouter.route('/books')
     .get(function(req, res) {
-        const responseJson = {
-            ola: 'Hello Dolly'
-        };
-
-        res.json(responseJson);
+        Book.find()
+            .then(books => {
+                res.json(books);
+            }, err => {
+                console.error(err);
+            });
     });
 
 module.exports = bookRouter;

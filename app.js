@@ -1,4 +1,11 @@
 const express = require('express');
+const mongoose = require('mongoose');
+
+mongoose.Promise = global.Promise;
+
+const db = mongoose.connect('mongodb://localhost/bookAPI', {
+    useMongoClient: true
+});
 
 const bookRouter = require('./routers/bookRouter');
 
